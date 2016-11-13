@@ -10,7 +10,7 @@ spagiapi.login(username, password, function(data) {
 });
 ```
 This returns an object:
-```json
+```js
 { loggedIn: true,
   accountType: 'S',
   id: 1105043,
