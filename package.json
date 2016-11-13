@@ -4,7 +4,7 @@
   "description": "An API for accessing data on the Spaggiari registro elettronico site",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "nodejs test.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +14,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/giulioz/spagiapi/issues"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.1.2"
   },
   "dependencies": {
     "request": "^2.78.0"
