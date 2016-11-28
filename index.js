@@ -30,7 +30,7 @@ module.exports.login = function(username, password, callback) {
 				function (rcerror, rcresponse, rcbody) {
 					if (!rcerror && rcresponse.statusCode == 200) {
 						ret.class = rcbody.match(/[1-5]+[A-Z]+/g)[0].substring(0,2);
-						callback(ret);
+						callback(ret, error, response, body);
 					}
 				});
 			} else {

@@ -1,6 +1,6 @@
 {
   "name": "spagiapi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An API for accessing data on the Spaggiari registro elettronico site",
   "main": "index.js",
   "scripts": {
