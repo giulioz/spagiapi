@@ -37,5 +37,8 @@ module.exports.login = function(username, password, callback) {
 				callback(ret);
 			}
 		}
+		else {
+			callback(null, error, response, body);
+		}
 	})
 };
