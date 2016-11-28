@@ -34,7 +34,7 @@ module.exports.login = function(username, password, callback) {
 					}
 				});
 			} else {
-				callback(ret);
+				callback(ret, error, response, body);
 			}
 		}
 		else {
