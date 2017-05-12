@@ -3,7 +3,7 @@
 var request = require('request');
 
 // Hardcoded URLs
-var loginUrl		= "https://web.spaggiari.eu/auth/app/default/AuthApi2.php?a=aLoginPwd";
+var loginUrl		= "https://web.spaggiari.eu/auth/app/default/AuthApi3.php?a=aLoginPwd";
 var regclasseUrl	= "https://web.spaggiari.eu/cvv/app/default/regclasse.php";
 
 /**
@@ -22,7 +22,7 @@ module.exports.login = function(username, password, callback) {
 			if (auth.verified && !auth.loggedIn) {
 				var pfolio = JSON.parse(body).data.pfolio;
 				var ret = [];
-				ret.selection	= true;
+				ret.selection = true;
 				ret.users = [];
 				pfolio.fullList.forEach(function(item,i){
 					ret.users.push({name: item.nome, uid: item.account_string});
