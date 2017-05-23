@@ -3,7 +3,7 @@
 var request = require('request');
 
 // Hardcoded URLs
-var loginUrl		= "https://web.spaggiari.eu/auth/app/default/AuthApi3.php?a=aLoginPwd";
+var loginUrl		= "https://web.spaggiari.eu/auth/app/default/AuthApi4.php?a=aLoginPwd";
 var regclasseUrl	= "https://web.spaggiari.eu/cvv/app/default/regclasse.php";
 
 /**
@@ -15,23 +15,25 @@ module.exports.login = function(username, password, callback) {
 	var cookieJar = request.jar();
 	request.post({url: loginUrl, jar: cookieJar, form: {"uid": username, "pwd": password}},
 	function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			var auth = JSON.parse(body).data.auth;
+		if (!error && response.statusCode == 200 && JSON.parse(body).data && JSON.parse(body).data.auth) {
+            var auth = JSON.parse(body).data.auth;
 
 			// If there are more than one student per account
 			if (auth.verified && !auth.loggedIn) {
 				var pfolio = JSON.parse(body).data.pfolio;
-				var ret = [];
+				var ret = {};
 				ret.selection = true;
 				ret.users = [];
-				pfolio.fullList.forEach(function(item,i){
+				pfolio.fullList.forEach(function(item, i){
 					ret.users.push({name: item.nome, uid: item.account_string});
 				});
 				callback(ret, error, response);
 			}
 			// Only one user
 			else {
-				var ret = [];
+				var ret = {};
+                ret.uid = username;
+                ret.psw = password;
 				ret.verified	= auth.verified;
 				ret.loggedIn	= auth.loggedIn;
 				ret.accountType	= auth.accountInfo.type;
